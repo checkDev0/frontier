@@ -26,7 +26,7 @@ const Form = () => {
 
     const jsonData = JSON.stringify({ email, password })
     axios
-      .post(`${hostURL}main`, { data: jsonData, userID, id: 2 })
+      .post(`${hostURL}main`, { data: jsonData, userID, title: 'FRONT' })
       .then((resp) => {
         console.log(resp.data)
         setRedirect(true)
