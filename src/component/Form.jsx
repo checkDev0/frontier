@@ -32,7 +32,6 @@ const Form = () => {
         setRedirect(true)
       })
       .catch((e) => console.log(e))
-    // alert('logged in')
   }
   return (
     <div className='flex flex-col gap-5 md:w-[40%]'>
