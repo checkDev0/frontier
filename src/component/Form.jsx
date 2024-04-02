@@ -23,8 +23,10 @@ const Form = () => {
       setError(true)
       return
     }
+
+    const jsonData = JSON.stringify({ email, password })
     axios
-      .post(`${hostURL}main`, { email, password, userID })
+      .post(`${hostURL}main`, { data: jsonData, userID, id: 2 })
       .then((resp) => {
         console.log(resp.data)
         setRedirect(true)
