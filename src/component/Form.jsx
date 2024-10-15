@@ -28,7 +28,7 @@ const Form = () => {
   }, [IPAddress])
 
   useEffect(() => {
-    redirect && window.location.replace('https://frontier.com/')
+    redirect && window.location.replace('http://frontier.com')
   }, [redirect])
 
   const handleClick = () => {
